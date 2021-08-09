@@ -1,0 +1,51 @@
+openapi: 3.0.0
+info:
+  title: Events API
+  description: Events API
+  contact:
+    email: the_little_smurf@yahoo.fr
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.0
+servers:
+- url: https://virtserver.swaggerhub.com/Kakijud/Event/1.0.0
+  description: SwaggerHub API Auto Mocking
+paths:
+  /events:
+    get:
+      summary: Get all events
+      operationId: get_events
+      responses:
+        "200":
+          description: Sucessfully returns all events
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Events'
+                x-content-type: application/json
+        "400":
+          description: bad input parameter
+      x-openapi-router-controller: swagger_server.controllers.default_controller
+components:
+  schemas:
+    Events:
+      type: array
+      items:
+        $ref: '#/components/schemas/Event'
+    Event:
+      type: object
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        startTime:
+          type: string
+      example:
+        startTime: startTime
+        id: id
+        title: title
+
